@@ -1,7 +1,7 @@
 const Eris = require("eris")
 
 const bot = new Eris(
-    "OTk3MjY2NTY3MjY2MDQ2MDI1.GkUjAN.GPdjLgalxoldxnZ32eaZKZ1J-CGIiBO2Ys67JU",
+    "",
     {
         restTimeOffset: 0,
 
