@@ -1,0 +1,14 @@
+{
+  "name": "devpt",
+  "version": "1.0.0",
+  "description": "!ja",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./src/client/Client.js"
+  },
+  "author": "Not_Hagrid",
+  "license": "ISC",
+  "dependencies": {
+    "eris": "^0.17.1"
+  }
+}
