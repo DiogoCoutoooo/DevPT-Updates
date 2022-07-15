@@ -99,15 +99,6 @@ bot.on("messageCreate", (msg) => {
     else if (keywords.length < 12 && filteredCompare.length > 0 && keywords.includes("?")) {
         bot.createMessage(msg.channel.id ,{ content: ['👉 https://dontasktoask.com/pt-pt/'], embeds: [jaEmbed] })
     }
-
-    i = 0
-    n = 0
-
-    filteredCompare = []
-    filteredMandatory = []
-
-    compareState = ""
-    mandatoryState = ""
 })
 
 bot.connect()
