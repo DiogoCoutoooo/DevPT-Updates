@@ -1,4 +1,4 @@
-const { Client } = require("discord.js")
+const Eris = require("eris")
 
 const config = require("../../config.json")
 
@@ -8,19 +8,40 @@ const ReactionRoles = require("../listeners/ReactionRoles.ts")
 
 const prefix = "!"
 
-const client = new Client({ restTimeOffset: 0, intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS','GUILD_MEMBERS'], partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
+const client = new Eris(
+    config.token,
+    {
+        restTimeOffset: 0,
+
+        intents: [
+            "guilds",
+            "guildMembers",
+            "guildMessages",
+            'guildMessagesReaction'
+        ],
+
+        partials: [
+            "message",
+            "channel",
+            "reaction"
+        ]
+    },
+    {
+        owner: 'Not_Hagrid'
+    }
+)
 
 client.on("error", (err) => {
     console.error(err)
-});
+})
 
 client.on("ready", async () => {
     console.log(`√ ${client.user.username} #${client.user.discriminator} is online!`)
-});
+})
 
 client.on("messageCreate", (message) => {
     if (!message.content.startsWith(prefix)) {
-        JustAsk.execute(message)
+        JustAsk.execute(message, client)
     }
     
     if (message.content.startsWith(prefix)) {
@@ -34,7 +55,8 @@ client.on("messageCreate", (message) => {
 })
 
 client.on('interactionCreate', (interaction) => {
+    console.log("ouve uma interaction")
     ReactionRoles.execute(interaction)
 })
 
-client.login(config.token)
+client.connect()

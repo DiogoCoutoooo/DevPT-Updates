@@ -2,22 +2,24 @@ module.exports = {
     name: 'roles', 
     description: "Este comando recebe as interações do reaction role!",
     async execute(interaction) {
+
+        await interaction.acknowledge()
                 
-        const { values, member } = interaction
+        const { data, member } = interaction
 
-        const component = interaction.component
-        const removed = component.options.filter((option) => {
-            return !values.includes(option.value)
+        const components = interaction.message.components[0].components[0]
+        const removed = components.options.filter((option) => {
+          return !data.values.includes(option.value)
         })
-
+  
         for (const id of removed) {
-            member.roles.remove(id.value)
+          member.removeRole(id.value)
+        }
+  
+        for (const id of data.values) {
+          member.addRole(id)
         }
 
-        for (const id of values) {
-            member.roles.add(id)
-        }
-
-        interaction.reply({content: 'Roles Updated!', ephemeral: true})
+        interaction.createFollowup({ content: "Roles Adicionados!", flags: 64 }).catch(error => { console.error('Erro ao enviar mensagem efémera:', error) })
     }
 }
