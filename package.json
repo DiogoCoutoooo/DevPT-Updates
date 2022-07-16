@@ -1,14 +1,15 @@
 {
   "name": "devpt",
-  "version": "1.0.0",
-  "description": "!ja",
-  "main": "index.js",
+  "owner": "Not_Hagrid",
+  "version": "2.0.0",
+  "description": "DevPT",
+  "main": "Client.js",
   "scripts": {
     "test": "node ./src/client/Client.js"
   },
   "author": "Not_Hagrid",
   "license": "ISC",
   "dependencies": {
-    "eris": "^0.17.1"
+    "discord.js": "^13.8.1"
   }
 }
