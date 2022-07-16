@@ -3,13 +3,15 @@
   "owner": "Not_Hagrid",
   "version": "2.0.0",
   "description": "DevPT",
-  "main": "Client.js",
+  "main": "Client.ts",
   "scripts": {
-    "test": "node ./src/client/Client.js"
+    "test": "ts-node-dev --respawn --transpile-only --poll ./src/client/Client.ts"
   },
   "author": "Not_Hagrid",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^13.8.1"
+    "discord.js": "^13.8.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.4"
   }
 }
