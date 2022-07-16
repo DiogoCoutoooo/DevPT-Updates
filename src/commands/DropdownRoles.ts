@@ -4,8 +4,8 @@ module.exports = {
     name: 'roles', 
     description: "Este comando cria um reaction role!",
     execute(message, client) {
-        const guild = client.guilds.get("811194465993097246")
-        const staffrole = guild.roles.find(role => role.name === "REI") //O role do staff, para só ele poder mandar o comando !dropdown
+        const guild = client.guilds.get("730385704592343083")
+        const staffrole = guild.roles.find(role => role.name === "Moderador") //O role do staff, para só ele poder mandar o comando !dropdown
         const staffid = staffrole.id
         const membro = guild.members.get(message.author.id)
 
