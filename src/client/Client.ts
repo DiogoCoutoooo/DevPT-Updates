@@ -55,7 +55,6 @@ client.on("messageCreate", (message) => {
 })
 
 client.on('interactionCreate', (interaction) => {
-    console.log("ouve uma interaction")
     ReactionRoles.execute(interaction)
 })
 

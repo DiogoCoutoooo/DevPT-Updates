@@ -20,6 +20,6 @@ module.exports = {
           member.addRole(id)
         }
 
-        interaction.createFollowup({ content: "Roles Adicionados!", flags: 64 }).catch(error => { console.error('Erro ao enviar mensagem efémera:', error) })
+        interaction.createFollowup({ content: "Roles Atualizados!", flags: 64 }).catch(error => { console.error('Erro ao enviar mensagem efémera:', error) })
     }
 }

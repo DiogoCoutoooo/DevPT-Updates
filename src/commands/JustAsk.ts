@@ -1,18 +1,20 @@
+import { Client, Message } from "eris"
+
 module.exports = {
     name: 'JustAsk',
     description: "Este comando é ativado sempre que alguém manda uma mensagem para o servidor",
-    execute(message, client) {
+    execute(message:Message, client:Client) {
         if (message.author.bot) return
 
         //Variáveis para ver individualmente todos os elementos, o {i} para o compare[] e o {n} para o mandatory[]. Depois se estes elementos estiverem na frase original (keywords), são adicionadas ao filteredCompare/filteredMandatory
         let i = 0
         let n = 0
     
-        let compare = ["alguém", "alguem", "algum", "preciso", "precisava", "ajuda", "ajudar", "problema", "consegue", "malta", "gente", "programa", "algo", "codificação", "codificacão", "codificaçao", "codificacao"]
-        let mandatory = ["copilot", "android", "ios", "linux", "ubuntu", "manjaro", "mint", "windows", "java", "javascript", "js", "typescript", "ts", "kotlin", "html", "css", "c", "c#", "c++", "py", "python", "rust", "ruby", "pearl", "assembly", "shell", "bash", "haskell", "swift", "scala", "golang", "clojure", "net", "f#", "php", "game", "gamedev", "dev", "ops", "devops", "seguranca", "security", "backend", "back", "end", "iot", "system", "react", "vue", "angular", "node", "npm", "tkinter", "código", "codigo", "system", "códigos", "puppeteer"]
+        let compare:string[] = ["alguém", "alguem", "algum", "preciso", "precisava", "ajuda", "ajudar", "problema", "consegue", "malta", "gente", "programa", "algo", "codificação", "codificacão", "codificaçao", "codificacao"]
+        let mandatory:string[] = ["copilot", "android", "ios", "linux", "ubuntu", "manjaro", "mint", "windows", "java", "javascript", "js", "typescript", "ts", "kotlin", "html", "css", "c", "c#", "c++", "py", "python", "rust", "ruby", "pearl", "assembly", "shell", "bash", "haskell", "swift", "scala", "golang", "clojure", "net", "f#", "php", "game", "gamedev", "dev", "ops", "devops", "seguranca", "security", "backend", "back", "end", "iot", "system", "react", "vue", "angular", "node", "npm", "tkinter", "código", "codigo", "system", "códigos", "puppeteer"]
 
-        let filteredCompare:any[] = []
-        let filteredMandatory:any[] = []
+        let filteredCompare:string[] = []
+        let filteredMandatory:string[] = []
     
         let compareState = 0
         let mandatoryState = 0
