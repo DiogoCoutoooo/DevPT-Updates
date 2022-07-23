@@ -4,16 +4,17 @@ const { MessageActionRow, MessageSelectMenu } = require('discord.js');
 
 module.exports = {
     name: 'roles', 
-    description: "Este comando cria um reaction role!",
+    description: "Este comando cria um dropdown menu para escolheres o teu role!",
     async execute(message:Message, client) {
-        const guild = client.guilds.get("730385704592343083")
-        const staffrole = guild.roles.find(role => role.name === "Moderador") //O role do staff, para só ele poder mandar o comando !dropdown
+        const guild = client.guilds.cache.get("730385704592343083") //IGNORAR 811194465993097246
+        const staffrole = guild.roles.cache.find(role => role.name === "Moderador") //O role do staff, para só ele poder mandar o comando !dropdown
         const staffid = staffrole.id
         const membro = guild.members.cache.get(message.author.id)
 
         if (!membro.roles.cache.has(staffid)) {
             return
         } else {
+            message.delete()
 
             const one = message?.guild?.roles.cache.find(role => role.name === "C")
             const two =  message?.guild?.roles.cache.find(role => role.name === "C++")
@@ -32,7 +33,6 @@ module.exports = {
             const fiftenn =  message?.guild?.roles.cache.find(role => role.name === "Swift")
             const sixteen =  message?.guild?.roles.cache.find(role => role.name === "Scala")
             const seventeen =  message?.guild?.roles.cache.find(role => role.name === ".NET")
-
 
             const rowch = new MessageActionRow().addComponents(
                 new MessageSelectMenu()

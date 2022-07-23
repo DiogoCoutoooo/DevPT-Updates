@@ -18,6 +18,6 @@ module.exports = {
             member.roles.add(id)
         }
 
-        interaction.reply({content: 'Roles Updated!', ephemeral: true})
+        interaction.reply({content: 'Roles Atualizados!', ephemeral: true}).catch(error => { console.error('Erro ao enviar mensagem efémera:', error) })
     }
 }

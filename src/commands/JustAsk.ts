@@ -16,8 +16,8 @@ module.exports = {
         let filteredCompare:string[] = []
         let filteredMandatory:string[] = []
     
-        let compareState
-        let mandatoryState
+        let compareState = 0
+        let mandatoryState = 0
     
         //Dá o número de pontos finais e vírgulas numa mensagem ---ainda não implementado, a usar mais tarde---
         const totalPonctuation = message.content.split(/[.,(){}]/).length - 1
@@ -25,25 +25,23 @@ module.exports = {
         //Divide a frase para apenas ficarem palavras sem pontuação
         const keywords = message.content.replace(/[.,!_]/, " ").replace(/(\r\n|\n|\r)/g, " ").replace("?", " ?").toLowerCase().split(" ")
     
-        console.log(keywords)
-    
         //Palvras a comparar, para saber se se trata realmente de uma pergunta
-        while (compareState != undefined) {
+        while (compareState != 1) {
             let pushCompareWord = keywords.includes(compare[i])
     
             if (pushCompareWord) {
-                filteredCompare.push(`compare[i]`)
+                filteredCompare.push(compare[i])
             }
     
             if (compare[i] == undefined) {
-                compareState = undefined
+                compareState = 1
             }
     
             i = i + 1
         }
     
         //Palvras obrigatórias, para diferenciar perguntas de programação de perguntas casuais
-        while (mandatoryState != undefined) {
+        while (mandatoryState != 1) {
             let pushMandatoryWord = keywords.includes(mandatory[n])
     
             if (pushMandatoryWord) {
@@ -51,7 +49,7 @@ module.exports = {
             }
     
             if (mandatory[n] == undefined) {
-                mandatoryState = undefined
+                mandatoryState = 1
             }
     
             n = n + 1
@@ -68,7 +66,7 @@ module.exports = {
         }
     
         //Primeiro critério que defini para considerar uma pergunta "mal-feita"
-        if (keywords.length < 16 && filteredCompare.length > 0 && filteredMandatory.length > 0) {       
+        if (keywords.length < 16 && filteredCompare.length > 0 && filteredMandatory.length > 0) {
             message.channel.send({ content: '👉 https://dontasktoask.com/pt-pt/', embeds: [jaEmbed] })
         }
     
